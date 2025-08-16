@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Repository\GalleryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 final class SentFrontController extends AbstractController
 {
@@ -18,9 +18,9 @@ final class SentFrontController extends AbstractController
             return [
                 'id' => $gallery->getId(),
                 'name' => $gallery->getName(),
-                'types' => method_exists($gallery, 'getTypes') ? $gallery->getTypes() : null,
-                // Ajoute le spriteUrl en fonction du pokeId (ici j'utilise getId() comme exemple)
-                'spriteUrl' => 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' . $gallery->getId() . '.png',
+                'types' => $gallery->getTypes(),
+                'imageUrl' => $gallery->getSpriteUrl(),
+                'pokeApiId' => $gallery->getPokeApiId(),
             ];
         }, $galleries);
 

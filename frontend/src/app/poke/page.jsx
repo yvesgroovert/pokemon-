@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 // Composant affichant une carte Pokémon
 function PokemonCard({ pokemon }) {
-  const { id, name, spriteUrl, types } = pokemon;
+  const { id, name, imageUrl, types } = pokemon;
 
   // Convertir types en tableau si c'est une string séparée par des virgules
   const typesArray = typeof types === "string" ? types.split(",") : types;
@@ -15,9 +15,9 @@ function PokemonCard({ pokemon }) {
         {name} (ID: {id})
       </h2>
 
-      {spriteUrl ? (
+      {imageUrl ? (
         <img
-          src={spriteUrl}
+          src={imageUrl}
           alt={name}
           className="w-40 h-40 object-contain mb-4"
           loading="lazy"
