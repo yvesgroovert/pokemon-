@@ -27,3 +27,5 @@ final class SentFrontController extends AbstractController
         return $this->json($data);
     }
 }
+
+//
